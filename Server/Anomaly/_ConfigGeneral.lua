@@ -7,7 +7,7 @@
 	Anomaly.Conf.Enable = false									--	Enable/disable the whole map script.
 	Anomaly.Conf.Name = 'Anomaly Tower'							--	Public name of the map, shown everywhere.
 	Anomaly.Conf.Map = 'Anomaly'								--	Private name of the map, used for internal purposes.
-	Anomaly.Conf.Copies = 5										--	Number of map copies available at a single time.
+	Anomaly.Conf.Instances = 5									--	Number of map copies available at a single time.
 	Anomaly.Conf.NameNPC = 'Akeno'								--	Name of the NPC where registration is done.
 	-- ***************************************************************************************************************************** --
 	-- ************************************************ Entry Requirement Variables ************************************************ --

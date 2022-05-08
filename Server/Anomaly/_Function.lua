@@ -3,7 +3,24 @@ if not Anomaly then
 	Anomaly.Conf = {}
 	Anomaly.Conf.Require = {}
 	Anomaly.Conf.Text = {NPC = {}}
-	Anomaly.Lobby = {}
+	Anomaly.Instance = {}
+end
+
+Anomaly.AvailableInstance = function()
+	local Value = 0
+	for a = 1, Anomaly.Conf.Instances, 1 do
+		if Anomaly.Instance[a] == nil or not Anomaly.Instance[a].Initiate then
+			Value = a
+			break
+		end
+	end
+	return Value
+end
+Anomaly.StartInstance = function(CopyID)
+	Anomaly.Instance[CopyID] = {}
+	Anomaly.Instance[CopyID].Init = false
+	Anomaly.Instance[CopyID].Floor = 0
+	Anomaly.Instance[CopyID].Time = 0
 end
 
 Anomaly.Register = function(Player, NPC)
