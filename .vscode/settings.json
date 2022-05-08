@@ -110,7 +110,13 @@
         "Text",
         "Talk",
         "JumpPage",
-        "ClearAllSubMapMonster"
+        "ClearAllSubMapMonster",
+        "InitTrigger",
+        "TriggerAction",
+        "NpcInfoReload",
+        "GetMultiTrigger",
+        "Start",
+        "CloseTalk"
     ],
     "Lua.diagnostics.disable": [
         "lowercase-global"
