@@ -1,4 +1,7 @@
-dofile(GetResPath("Anomaly/_ Function.lua"))
+dofile(GetResPath("Anomaly/_Function.lua"))
+dofile(GetResPath("Anomaly/_ConfigGeneral.lua"))
+dofile(GetResPath("Anomaly/_ConfigFloor.lua"))
+dofile(GetResPath("Anomaly/_ConfigNPC.lua"))
 
 function config(map)
 	MapCanSavePos(map, 0)
