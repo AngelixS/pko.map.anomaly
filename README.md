@@ -9,3 +9,8 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
   * `Anomaly.Conf.Test = true` or `Anomaly.Conf.Test = false`
 * Increase the floor limit by just changing a variable.
   * `Anomaly.Conf.FloorLimit = 10`
+* Increase the number of instances available at a single time.
+  * `Anomaly.Conf.Instances = 5`
+* Adjust the monster's attribute modifiers:
+  * Increases the monster's attribute per level.
+    * Formula: `Anomaly.Conf.Attribute.Normal * FloorLevel`
