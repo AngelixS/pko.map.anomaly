@@ -1,2 +1,3 @@
 .vscode/ export-ignore
 .gitattributes export-ignore
+*.db
