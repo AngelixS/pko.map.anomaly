@@ -13,8 +13,17 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
   * `Anomaly.Conf.Instances = 5`
 * Adjust the monster's attribute modifiers:
   * Increases the monster's attribute per level.
+    * Adjust: `Anomaly.Conf.Attribute.Normal = 0.010`
     * Formula: `1 + (Anomaly.Conf.Attribute.Normal * FloorLevel)`
   * Increases the miniboss' attribute (every 5th level).
+    * Adjust: `Anomaly.Conf.Attribute.Medium = 0.025`
     * Formula: `1 + (Anomaly.Conf.Attribute.Normal * FloorLevel) + Anomaly.Conf.Attribute.Medium`
-  * Increases the boss' attribute (every 5th level).
+  * Increases the boss' attribute (every 10th level).
+    * Adjust: `Anomaly.Conf.Attribute.Final = 0.050`
     * Formula: `1 + (Anomaly.Conf.Attribute.Normal * FloorLevel) + Anomaly.Conf.Attribute.Final`
+
+## Installation:
+1. Client:
+  1. Place contents from `Client` into your client folder.
+  2. Add the following line into your `MapInfo.txt`, adjust the number according to your file and compile directly from your client.
+    * ```XX	Anomaly	Anomaly Tower	1	50,50	3,50,50	255,255,255```
