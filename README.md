@@ -23,7 +23,7 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
     * Formula: `1 + (Anomaly.Conf.Attribute.Normal * FloorLevel) + Anomaly.Conf.Attribute.Final`
 
 ## Installation:
-1. Client:
+### Client:
   1. Place contents from `Client` into your client folder.
   2. Add the following line into your `MapInfo.txt`, adjust the number according to your file and compile directly from your client.
-    * ```XX	Anomaly	Anomaly Tower	1	50,50	3,50,50	255,255,255```
+    * `XX	Anomaly	Anomaly Tower	1	50,50	3,50,50	255,255,255`
