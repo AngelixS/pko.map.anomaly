@@ -6,4 +6,6 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
 * Enable/disable the whole map script with just a variable.
   * `Anomaly.Conf.Enable = true` or `Anomaly.Conf.Enable = false`
 * Enable/disable test mode, which makes all monster not attack.
+  * `Anomaly.Conf.Test = true` or `Anomaly.Conf.Test = false`
 * Increase the floor limit by just changing a variable.
+  * `Anomaly.Conf.FloorLimit = 10`
