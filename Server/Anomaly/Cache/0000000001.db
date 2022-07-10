@@ -1,0 +1,8 @@
+return {
+-- Table: {1}
+{
+	["Help"]=0,
+	["Name"]="Angelix",
+	["Floor"]=1,
+},
+}
