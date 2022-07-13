@@ -77,9 +77,9 @@
     ```
 6. Look for the following function: `GetExp_PKM`.
   * At the end of that function, add this:
-  ```lua
+    ```lua
     Anomaly.PKM(dead, atk)
-  ```
+    ```
 
 ## Requirements:
 * Serialize.lua
