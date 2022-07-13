@@ -35,11 +35,9 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
     ```lua
     dofile(GetResPath("Anomaly/Anomaly Function.lua"))
     ```
-3. The map must be loaded in the same map where the NPC will be located.
-4. Create an NPC with the following function:
+3. Create an NPC with the following that contains the following function:
   * `AnomalyNPC`
-    * The name of the NPC must match whatever is placed in the variable `Anomaly.Conf.NameNPC`.
-5. Look for the following function: `MsgProc`.
+4. Look for the following function: `MsgProc`.
   * Look for this:
   	```lua
     elseif item.func == ChangeItem then
@@ -50,7 +48,7 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
     elseif item.func == Anomaly.Register then
       return Anomaly.Register(character, npc)
     ```
-6. Look for the following function: `ActionsProc`.
+5. Look for the following function: `ActionsProc`.
   * Look for this:
     ```lua 
     elseif actions[i].func == AddExp_6 then
@@ -68,7 +66,7 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
 			return
     ```
 
-
-
-### Requirements:
+## Requirements:
 * Serialize.lua
+* The map must be loaded in the same map where the NPC will be located.
+* The name of the NPC must match whatever is placed in the variable `Anomaly.Conf.NameNPC`.
