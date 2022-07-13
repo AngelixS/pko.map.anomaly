@@ -39,24 +39,32 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
     * The name of the NPC must match whatever is placed in the variable `Anomaly.Conf.NameNPC`.
 5. Look for the following function: `MsgProc`.
   * Look for this:
-  		```lua elseif item.func == ChangeItem then
-			return ChangeItem(character,npc)```
+  		```lua
+      elseif item.func == ChangeItem then
+			  return ChangeItem(character,npc)
+      ```
   * Add this below that:
-  		```lua elseif item.func == Anomaly.Register then
-			return Anomaly.Register(character, npc)```
+  		```lua
+      elseif item.func == Anomaly.Register then
+			  return Anomaly.Register(character, npc)
+      ```
 6. Look for the following function: `ActionsProc`.
   * Look for this:
-    ```lua elseif actions[i].func == AddExp_6 then
-				PRINT( "ActionProc: AddExp_6, p1 = ", actions[i].p1)
-				local ret = AddExp_6( character,npc, actions[i].p1)
-				if ret ~= LUA_TRUE then
-					PRINT( "ActionProc:AddExp_6 = false" )
-					return LUA_FALSE
-				end```
+    ```lua 
+    elseif actions[i].func == AddExp_6 then
+			PRINT( "ActionProc: AddExp_6, p1 = ", actions[i].p1)
+			local ret = AddExp_6( character,npc, actions[i].p1)
+		  if ret ~= LUA_TRUE then
+				PRINT( "ActionProc:AddExp_6 = false" )
+				return LUA_FALSE
+			end
+    ```
   * Add this below that:
-    ```lua 		elseif actions[i].func == NpcInfoReload then
+    ```lua
+    elseif actions[i].func == NpcInfoReload then
 			NpcInfoReload(actions[i].p1, actions[i].p2)
-			return```
+			return
+    ```
 
 
 
