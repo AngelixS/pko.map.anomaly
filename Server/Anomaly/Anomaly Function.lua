@@ -257,8 +257,10 @@ Anomaly.Finish = function(Player)
 	local PlayerID = GetRoleID(Player)
 	if Anomaly.Player[PlayerID].Floor == (Floor - 1) then
 		Anomaly.Player[PlayerID].Floor = Anomaly.Player[PlayerID].Floor + 1
+		Anomaly.HandleRewardMain(Player, Floor)
 	else
 		Anomaly.Player[PlayerID].Help = Anomaly.Player[PlayerID].Help + 1
+		Anomaly.HandleRewardSupport(Player, Floor)
 	end
 	Anomaly.SavePlayer(Player)
 end
