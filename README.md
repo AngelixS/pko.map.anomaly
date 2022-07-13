@@ -3,8 +3,12 @@
 ## Description:
 * The map "Anomaly" aims to be an instanced map with tower climb like features. The map is fixed, but the difficulty and monsters on each floor are gradually stronger from the previous floor. Every 5th floor will contain an extra monster that will be a mini-boss and every 10th floor will be a boss floor.
 * Players can enter solo or get help as a team, but only the players that are at that floor level will get the floor completion.
+  * It can be customized how many players can enter the instance at once just in case.
+* The monsters are chosen at random, they are set within a database so all players can expect the same monsters in that specific floor.
 
 ## Customization:
+* Designate how many players can enter the instance:
+  * `Anomaly.Conf.Players = 1`
 * Enable/disable the whole map script with just a variable.
   * `Anomaly.Conf.Enable = true` or `Anomaly.Conf.Enable = false`
 * Enable/disable test mode, which makes all monster not attack.
@@ -23,6 +27,10 @@
   * Increases the boss' attribute (every 10th level).
     * Adjust: `Anomaly.Conf.Attribute.Final = 0.050`
     * Formula: `1 + (Anomaly.Conf.Attribute.Normal * FloorLevel) + Anomaly.Conf.Attribute.Final`
+* Monsters are chosen at random from their respective file where their base attribute are configured.
+  * Monster File: `Anomaly Attribute Monster`.
+  * Mini-Boss File: `Anomaly Attribute MiniBoss`.
+  * Boss File: `Anomaly Attribute Boss`.
 
 ## Installation:
 ### Client:
