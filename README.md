@@ -75,3 +75,7 @@
 
 ## Notes:
 * Rewards are not designed yet, there's a function that handles it, but it's empty.
+  * Function that handles reward for players with that floor level:
+    `Anomaly.HandleRewardMain`
+  * Function that handles reward for players that are there for support:
+    `Anomaly.HandleRewardSupport`
