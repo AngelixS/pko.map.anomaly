@@ -87,3 +87,5 @@
     `Anomaly.HandleRewardMain`
   * Function that handles reward for players that are there for support:
     `Anomaly.HandleRewardSupport`
+* Map will left as-is. No support will be given, unless I notice something is wrong with the installation process (something missing).
+* Hopefully this gets something unique into public servers instead of all that copy paste stuff. We all know that won't happen, but never hurts to try.
