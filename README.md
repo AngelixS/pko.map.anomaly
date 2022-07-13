@@ -75,6 +75,11 @@
 			NpcInfoReload(actions[i].p1, actions[i].p2)
 			return
     ```
+6. Look for the following function: `GetExp_PKM`.
+  * At the end of that function, add this:
+  ```lua
+    Anomaly.PKM(dead, atk)
+  ```
 
 ## Requirements:
 * Serialize.lua
