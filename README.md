@@ -1,6 +1,8 @@
 <h1 align="center">Anomaly Tower</h1>
 
-The map "Anomaly" aims to be an instanced map with tower climb like features. The map is fixed, but the difficulty and monsters on each floor are generated and saved each time the floor maximum limit is increased.
+## Description:
+* The map "Anomaly" aims to be an instanced map with tower climb like features. The map is fixed, but the difficulty and monsters on each floor are gradually stronger from the previous floor. Every 5th floor will contain an extra monster that will be a mini-boss and every 10th floor will be a boss floor.
+* Players can enter solo or get help as a team, but only the players that are at that floor level will get the floor completion.
 
 ## Customization:
 * Enable/disable the whole map script with just a variable.
@@ -41,7 +43,7 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
   * Look for this:
   	```lua
     elseif item.func == ChangeItem then
-			return ChangeItem(character,npc)
+		  return ChangeItem(character,npc)
     ```
   * Add this below that:
   	``` lua
@@ -70,3 +72,6 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
 * Serialize.lua
 * The map must be loaded in the same map where the NPC will be located.
 * The name of the NPC must match whatever is placed in the variable `Anomaly.Conf.NameNPC`.
+
+## Notes:
+* Rewards are not designed yet, there's a function that handles it, but it's empty.
