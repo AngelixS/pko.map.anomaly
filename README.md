@@ -32,7 +32,7 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
 1. Place contents from `Server` into your resource folder from your server.
 2. Call the functions file to load the functions into the server.
   * Add the following line into the last file loaded in your server.
-    `dofile(GetResPath("Anomaly/Anomaly Function.lua"))`
+    ```dofile(GetResPath("Anomaly/Anomaly Function.lua"))```
 3. The map must be loaded in the same map where the NPC will be located.
 4. Create an NPC with the following function:
   * `AnomalyNPC`
