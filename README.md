@@ -40,13 +40,13 @@ The map "Anomaly" aims to be an instanced map with tower climb like features. Th
 5. Look for the following function: `MsgProc`.
   * Look for this:
   	```lua
-      elseif item.func == ChangeItem then
-			  return ChangeItem(character,npc)
+    elseif item.func == ChangeItem then
+			return ChangeItem(character,npc)
     ```
   * Add this below that:
   	``` lua
     elseif item.func == Anomaly.Register then
-			  return Anomaly.Register(character, npc)
+      return Anomaly.Register(character, npc)
     ```
 6. Look for the following function: `ActionsProc`.
   * Look for this:
