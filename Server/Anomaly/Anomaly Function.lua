@@ -250,7 +250,6 @@ Anomaly.PKM = function(Monster, Player)
 			MapCopyNotice(MapCopy, string.format(Anomaly.Message.FinishedFloor, Anomaly.Conf.Name, Floor))
 			Anomaly.Instance[CopyID].Finish = true
 		end
-		print(Anomaly.Instance[CopyID].Finish)
 	end
 end
 Anomaly.Finish = function(Player)
