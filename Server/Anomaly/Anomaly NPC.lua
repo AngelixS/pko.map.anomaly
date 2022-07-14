@@ -15,3 +15,6 @@ AnomalyNPC = function()
 	Text(1, AdjustTextSpace('Leave', 36), CloseTalk)
 	
 end
+AdjustTextSpace = AdjustTextSpace or function(Text)
+	return Text
+end
