@@ -240,11 +240,14 @@ end
 Anomaly.PKM = function(Monster, Player)
 	local MapCopy = GetChaMapCopy(Player)
 	local CopyID = GetMapCopyID2(MapCopy)
+	local Floor = Anomaly.Instance[CopyID].Floor
 	if Anomaly.Instance[CopyID].MonsterKill < Anomaly.Instance[CopyID].MonsterCount then
 		if Anomaly.Instance[CopyID].Monster[Monster] then
 			Anomaly.Instance[CopyID].MonsterKill = Anomaly.Instance[CopyID].MonsterKill + 1
+			MapCopyNotice(MapCopy, string.format(Anomaly.Message.KilledMonster, Anomaly.Conf.Name, Anomaly.Instance[CopyID].MonsterKill, Anomaly.Instance[CopyID].MonsterCount))
 		end
 		if Anomaly.Instance[CopyID].MonsterKill == Anomaly.Instance[CopyID].MonsterCount then
+			MapCopyNotice(MapCopy, string.format(Anomaly.Message.FinishedFloor, Anomaly.Conf.Name, Floor))
 			Anomaly.Instance[CopyID].Finish = true
 		end
 		print(Anomaly.Instance[CopyID].Finish)

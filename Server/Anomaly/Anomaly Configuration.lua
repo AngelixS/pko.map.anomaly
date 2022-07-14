@@ -9,7 +9,7 @@
 	Anomaly.Conf.Name = 'Anomaly Tower'							--	Public name of the map, shown everywhere.
 	Anomaly.Conf.Map = 'Anomaly'								--	Private name of the map, used for internal purposes.
 	Anomaly.Conf.Instances = 5									--	Number of map copies available at a single time.
-	Anomaly.Conf.NameNPC = 'Manager'								--	Name of the NPC where registration is done.
+	Anomaly.Conf.NameNPC = 'Akeno'								--	Name of the NPC where registration is done.
 	Anomaly.Conf.Players = 1									--	Amount of players that can enter.
 	Anomaly.Conf.FloorLimit = 10								--	Maximum floor limit.
 	Anomaly.Conf.Cache = 'Anomaly/Cache/'						--	Foler where player data will be stored.
@@ -48,3 +48,5 @@
     Anomaly.Message.NPC.NotQualify = 'Someone in the party is not qualified to enter [%s].'
 	Anomaly.Message.NPC.NoFreeInstance = 'Cannot participate in [%s] at this time, there\'s no available instances right now.'
     Anomaly.Message.NPC.FloorLimit = '%s: Cannot participate in [%s] since you\'ve reached the highest floor available.'
+	Anomaly.Message.KilledMonster = '%s: Killed Monster(s) (%d / %d)!'
+	Anomaly.Message.FinishedFloor = '%s: Successfully cleared floor %d!'
