@@ -11,10 +11,12 @@
 	Anomaly.Conf.Instances = 5									--	Number of map copies available at a single time.
 	Anomaly.Conf.NameNPC = 'Akeno'								--	Name of the NPC where registration is done.
 	Anomaly.Conf.Players = 1									--	Amount of players that can enter.
-	Anomaly.Conf.FloorLimit = 10								--	Maximum floor limit.
-	Anomaly.Conf.Cache = 'Anomaly/Cache/'						--	Foler where player data will be stored.
-	Anomaly.Conf.CacheExt = '.db'
-	Anomaly.Conf.FloorCache = 'Floor Configuration'
+	Anomaly.Conf.FloorLimit = 100								--	Maximum floor limit.
+	Anomaly.Conf.Cache = 'Anomaly/Cache/'						--	Folder where player data will be stored.
+	Anomaly.Conf.CacheExt = '.db'								--	Cache file extension.
+	Anomaly.Conf.FloorCache = '%s-FC-MDB-%04d%02d'				--	Floor cache file name (monthly).
+	Anomaly.Conf.PlayerCache = '%s-PS-PDB-%06d'					--	Player cache file name.
+	Anomaly.Conf.RewardGroup = 50								--	After how many floors will the reward table will switch to next one.
 	-- ***************************************************************************************************************************** --
 	-- ************************************************ Entry Requirement Variables ************************************************ --
 	-- ***************************************************************************************************************************** --
@@ -34,7 +36,6 @@
 						}
 	Anomaly.Conf.MonsterSpawn.PosX = {Min = 0019, Max = 0042}
 	Anomaly.Conf.MonsterSpawn.PosY = {Min = 0019, Max = 0042}
-
 	-- ***************************************************************************************************************************** --
 	-- ************************************************ Main Messages Configuration ************************************************ --
 	-- ***************************************************************************************************************************** --
