@@ -87,10 +87,5 @@
 * The name of the NPC must match whatever is placed in the variable `Anomaly.Conf.NameNPC`.
 
 ## Notes:
-* Rewards are not designed yet, there's a function that handles it, but it's empty.
-  * Function that handles reward for players with that floor level:
-    `Anomaly.HandleRewardMain`
-  * Function that handles reward for players that are there for support:
-    `Anomaly.HandleRewardSupport`
 * Map will left as-is. No support will be given, unless I notice something is wrong with the installation process (something missing) or an issue with the main script. If you modified it and have issues with your added code, that's not an issue I will fix.
 * Hopefully this gets something unique into public servers instead of all that copy paste stuff. We all know that won't happen, but never hurts to try.
