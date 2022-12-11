@@ -1,10 +1,13 @@
 <h1 align="center">Anomaly Tower</h1>
 
 ## Description:
-* The map "Anomaly" aims to be an instanced map with tower climb like features. The map is fixed, but the difficulty and monsters on each floor are gradually stronger from the previous floor. Every 5th floor will contain an extra monster that will be a mini-boss and every 10th floor will be a boss floor.
+* The map "Anomaly" aims to be an instanced map with tower climb like features. The map is fixed, but the difficulty and monsters on each floor are gradually stronger from the previous floor.
+  * Every 5th floor will contain an extra monster that will be a mini-boss and every 10th floor will be a boss floor.
 * Players can enter solo or get help as a team, but only the players that are at that floor level will get the floor completion.
-  * It can be customized how many players can enter the instance at once just in case.
-* The monsters are chosen at random, they are set within a database so all players can expect the same monsters in that specific floor.
+  * Those players at the current floor level will be treated as "main" players and have a set of rewards.
+  * Those players not at the current floor level will be treated as "support" players and have a different set of rewards.
+* It can be customized how many players can enter the instance at once just in case. The monsters are chosen at random, they are set within a database so all players can expect the same monsters in that specific floor.
+* The floors are refreshed every month. So if new monsters are added to the lists as future updates, they can appear in lower floors when a new months starts.
 
 ## Customization:
 * Designate how many players can enter the instance:
