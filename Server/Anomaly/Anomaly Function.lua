@@ -20,7 +20,6 @@ dofile(GetResPath("Anomaly/Anomaly Configuration.lua"))
 Anomaly.Monster = dofile(GetResPath("Anomaly/Anomaly Attribute Monster.lua"))
 Anomaly.MiniBoss = dofile(GetResPath("Anomaly/Anomaly Attribute MiniBoss.lua"))
 Anomaly.Boss = dofile(GetResPath("Anomaly/Anomaly Attribute Boss.lua"))
-dofile(GetResPath("Anomaly/Anomaly Floor Configuration.lua"))
 dofile(GetResPath("Anomaly/Anomaly Reward.lua"))
 dofile(GetResPath("Anomaly/Anomaly NPC.lua"))
 
@@ -295,15 +294,19 @@ Anomaly.HandleReward = function(Player, Floor, Type)
 			if Reward.Gold ~= 0 then
 				GoldSystem(Player, 3, (Reward.Gold * Multiplier))
 			end
-			GiveItem(Player, 0, Reward.Item, Reward.Quantity. Reward.Quality)
+			if Reward.Item ~= 0 and GetItemName(Reward.Item) ~= 'Unknown' then
+				GiveItem(Player, 0, Reward.Item, Reward.Quantity, Reward.Quality)
+			end
 			table.remove(RewardTable, Num)
 		end
 	end
-	local _, Reward = WeightedRandomnessHandler(RewardTable)
+	local _, Reward = Anomaly.Random(RewardTable)
 	if Reward.Gold ~= 0 then
 		GoldSystem(Player, 3, (Reward.Gold * Multiplier))
 	end
-	GiveItem(Player, 0, Reward.Item, Reward.Quantity. Reward.Quality)
+	if Reward.Item ~= 0 and GetItemName(Reward.Item) ~= 'Unknown' then
+		GiveItem(Player, 0, Reward.Item, Reward.Quantity, Reward.Quality)
+	end
 end
 Anomaly.MapCopyRun = function(MapCopy, CopyID)
 	if not Anomaly.Conf.Enable or not Anomaly.Instance[CopyID].Init or GetMapCopyPlayerNum(MapCopy) == 0 then
