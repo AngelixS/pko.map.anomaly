@@ -14,7 +14,9 @@ AnomalyNPC = function()
 	Text(1, AdjustTextSpace('Register', 36), Anomaly.Register)
 	Text(1, AdjustTextSpace('Leave', 36), CloseTalk)
 	
-end
-AdjustTextSpace = AdjustTextSpace or function(Text)
-	return Text
+	local CurMonth = os.date('%Y') * 100 + os.date('%m')
+	if Anomaly.CurMonth ~= CurMonth then
+		Anomaly.CurMonth = CurMonth
+		Anomaly.GenerateFloors()
+	end
 end
