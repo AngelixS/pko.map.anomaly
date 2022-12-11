@@ -11,6 +11,9 @@ if not Anomaly then
 	Anomaly.Floor = nil
 
 	Anomaly.KickStart = false
+	Anomaly.CurMonth = 0
+
+	Anomaly.Reward = {Main = {}, Support = {}}
 end
 
 dofile(GetResPath("Anomaly/Anomaly Configuration.lua"))
@@ -116,7 +119,7 @@ end
 Anomaly.LoadPlayer = function(Player)
 	local Name = GetChaDefaultName(Player)
 	local PlayerID = GetRoleID(Player)
-	local Path = GetResPath(Anomaly.Conf.Cache..string.format('%010d', GetRoleID(Player))..Anomaly.Conf.CacheExt)
+	local Path = GetResPath(Anomaly.Conf.Cache..string.format(Anomaly.Conf.PlayerCache, string.upper(Anomaly.Conf.Map), GetRoleID(Player))..Anomaly.Conf.CacheExt)
 	if not Anomaly.Player[PlayerID] then
 		if file_exists(Path) then
 			Anomaly.Player[PlayerID] = table.load(Path)
@@ -131,13 +134,15 @@ end
 Anomaly.SavePlayer = function(Player)
 	local Name = GetChaDefaultName(Player)
 	local PlayerID = GetRoleID(Player)
-	local Path = GetResPath(Anomaly.Conf.Cache..string.format('%010d', GetRoleID(Player))..Anomaly.Conf.CacheExt)
+	local Path = GetResPath(Anomaly.Conf.Cache..string.format(Anomaly.Conf.PlayerCache, string.upper(Anomaly.Conf.Map), GetRoleID(Player))..Anomaly.Conf.CacheExt)
 	Anomaly.Player[PlayerID].Name = Name
 	table.save(Anomaly.Player[PlayerID], Path)
 end
 Anomaly.GenerateFloors = function()
-	local Path = GetResPath(Anomaly.Conf.Cache..Anomaly.Conf.FloorCache..Anomaly.Conf.CacheExt)
-	if not Anomaly.Floor then
+	local FileName = string.format(Anomaly.Conf.FloorCache, string.upper(Anomaly.Conf.Map), os.date('%Y'), os.date('%m'))
+	local Path = GetResPath(Anomaly.Conf.Cache..FileName..Anomaly.Conf.CacheExt)
+	local CurMonth = os.date('%Y') * 100 + os.date('%m')
+	if not Anomaly.Floor or Anomaly.CurMonth ~= CurMonth then
 		if file_exists(Path) then
 			Anomaly.Floor = table.load(Path)
 		else
@@ -259,12 +264,46 @@ Anomaly.Finish = function(Player)
 	local PlayerID = GetRoleID(Player)
 	if Anomaly.Player[PlayerID].Floor == (Floor - 1) then
 		Anomaly.Player[PlayerID].Floor = Anomaly.Player[PlayerID].Floor + 1
-		Anomaly.HandleRewardMain(Player, Floor)
+		Anomaly.HandleReward(Player, Floor, 01)
 	else
 		Anomaly.Player[PlayerID].Help = Anomaly.Player[PlayerID].Help + 1
-		Anomaly.HandleRewardSupport(Player, Floor)
+		Anomaly.HandleReward(Player, Floor, 02)
 	end
 	Anomaly.SavePlayer(Player)
+end
+Anomaly.HandleReward = function(Player, Floor, Type)
+	local MultiNormal, MultiMedium, MultiFinal = Anomaly.Multiplier(Floor)
+	local RewardGroup, PlayerType, FloorType, Multiplier = math.ceil(Floor / Anomaly.Conf.RewardGroup), Type, 0, 0
+	RewardGroup = math.min(RewardGroup, table.getn(Anomaly.Reward))
+
+	if (Floor - math.floor(Floor / 10) * 10) == 0 then
+		FloorType, Multiplier = 03, MultiFinal
+	elseif (Floor - math.floor(Floor / 5) * 5) == 0 then
+		FloorType, Multiplier = 02, MultiMedium
+	else
+		FloorType, Multiplier = 01, MultiNormal
+	end
+
+	local RewardTable = {}
+	for _, Reward in pairs(Anomaly.Reward[RewardGroup]) do
+		if Reward.Allow and Reward.Type == PlayerType and Reward.Floor == FloorType then
+			table.insert(RewardTable, Reward)
+		end
+	end
+	for Num, Reward in pairs(RewardTable) do
+		if not Reward.Random then
+			if Reward.Gold ~= 0 then
+				GoldSystem(Player, 3, (Reward.Gold * Multiplier))
+			end
+			GiveItem(Player, 0, Reward.Item, Reward.Quantity. Reward.Quality)
+			table.remove(RewardTable, Num)
+		end
+	end
+	local _, Reward = WeightedRandomnessHandler(RewardTable)
+	if Reward.Gold ~= 0 then
+		GoldSystem(Player, 3, (Reward.Gold * Multiplier))
+	end
+	GiveItem(Player, 0, Reward.Item, Reward.Quantity. Reward.Quality)
 end
 Anomaly.MapCopyRun = function(MapCopy, CopyID)
 	if not Anomaly.Conf.Enable or not Anomaly.Instance[CopyID].Init or GetMapCopyPlayerNum(MapCopy) == 0 then
