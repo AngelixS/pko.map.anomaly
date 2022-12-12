@@ -12,6 +12,7 @@
 	Anomaly.Conf.NameNPC = 'Akeno'								--	Name of the NPC where registration is done.
 	Anomaly.Conf.Players = 1									--	Amount of players that can enter.
 	Anomaly.Conf.FloorLimit = 100								--	Maximum floor limit.
+	Anomaly.Conf.TimeLimit = 120								--	Time (in seconds) players have to finish the level.
 	Anomaly.Conf.Cache = 'Anomaly/Cache/'						--	Folder where player data will be stored.
 	Anomaly.Conf.CacheExt = '.db'								--	Cache file extension.
 	Anomaly.Conf.FloorCache = '%s-FC-MDB-%04d%02d'				--	Floor cache file name (monthly).
@@ -51,3 +52,4 @@
     Anomaly.Message.NPC.FloorLimit = '%s: Cannot participate in [%s] since you\'ve reached the highest floor available.'
 	Anomaly.Message.KilledMonster = '%s: Killed Monster(s) (%d / %d)!'
 	Anomaly.Message.FinishedFloor = '%s: Successfully cleared floor %d!'
+	Anomaly.Message.MapClosing = '%s: Floor will crumble in %d second(s)!'

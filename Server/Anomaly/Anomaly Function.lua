@@ -45,8 +45,7 @@ Anomaly.InstanceReset = function(CopyID)
 	Anomaly.Instance[CopyID].Summon = false
 
 	Anomaly.Instance[CopyID].Floor = 0
-	Anomaly.Instance[CopyID].Time = 0
-	Anomaly.Instance[CopyID].KickTime = 5
+	Anomaly.Instance[CopyID].Time = Anomaly.Conf.TimeLimit
 	Anomaly.Instance[CopyID].MonsterKill = 0
 	Anomaly.Instance[CopyID].MonsterCount = 0
 end
@@ -230,6 +229,8 @@ Anomaly.SetAttribute = function(Monster, MonsterVar, Multiplier, Level)
 		if AttrNum == ATTR_BMXHP then
 			SetCharaAttr(Value, Monster, AttrNum)
 			SetCharaAttr(Value, Monster, ATTR_HP)
+		elseif AttrNum == ATTR_BASPD then
+			SetCharaAttr((100000 / Value), Monster, AttrNum)
 		else
 			SetCharaAttr(Value, Monster, AttrNum)
 		end
@@ -253,6 +254,7 @@ Anomaly.PKM = function(Monster, Player)
 		if Anomaly.Instance[CopyID].MonsterKill == Anomaly.Instance[CopyID].MonsterCount then
 			MapCopyNotice(MapCopy, string.format(Anomaly.Message.FinishedFloor, Anomaly.Conf.Name, Floor))
 			Anomaly.Instance[CopyID].Finish = true
+			Anomaly.Instance[CopyID].Time = 5
 		end
 	end
 end
@@ -320,19 +322,21 @@ Anomaly.MapCopyRun = function(MapCopy, CopyID)
 		Anomaly.Instance[CopyID].Summon = true
 		Anomaly.Summon(MapCopy, CopyID, Anomaly.Instance[CopyID].Floor)
 	end
-	if Anomaly.Instance[CopyID].Finish then
-		if Anomaly.Instance[CopyID].KickTime == 0 then
+	if Anomaly.Instance[CopyID].Time == 0 then
+		if Anomaly.Instance[CopyID].Finish then
 			DealAllPlayerInMap(MapCopy, 'Anomaly_Finish')
-			Anomaly.InstanceReset(CopyID)
-			ClearAllSubMapCha(MapCopy)
-			ClearAllSubMapMonster(MapCopy)
-			CloseMapCopy(Anomaly.Conf.Map, CopyID)
-			return
-		else
-			Anomaly.Instance[CopyID].KickTime = Anomaly.Instance[CopyID].KickTime - 1
 		end
+		Anomaly.InstanceReset(CopyID)
+		ClearAllSubMapCha(MapCopy)
+		ClearAllSubMapMonster(MapCopy)
+		CloseMapCopy(Anomaly.Conf.Map, CopyID)
+		return
+	elseif Anomaly.Instance[CopyID].Time <= 10 then
+		MapCopyNotice(MapCopy, string.format(Anomaly.Message.MapClosing, Anomaly.Conf.Name, Anomaly.Instance[CopyID].Time))
+	elseif (Anomaly.Instance[CopyID].Time - math.floor(Anomaly.Instance[CopyID].Time / 15) * 15) == 0 then
+		MapCopyNotice(MapCopy, string.format(Anomaly.Message.MapClosing, Anomaly.Conf.Name, Anomaly.Instance[CopyID].Time))
 	end
-	Anomaly.Instance[CopyID].Time = Anomaly.Instance[CopyID].Time + 1
+	Anomaly.Instance[CopyID].Time = Anomaly.Instance[CopyID].Time - 1
 end
 Anomaly.AfterEnter = function(Player, MapCopy, CopyID)
 end
